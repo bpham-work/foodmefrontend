@@ -1,33 +1,28 @@
 <div *ngIf="store && items">
   <div><img src="{{ store.photoUrl }}"/></div>
-  <div>
+  <div class="name-container">
     <div>{{ store.name }}</div>
     <div>{{ store.address }}</div>
   </div>
   <hr>
-  <div>
+  <div class="bottom-container">
     <div>Food</div>
     <div class="list-container">
-      <div>
+      <div id="in-stock">
         <div>In-Stock</div>
-        <div></div>
+        <div>
+          <ul>
+              <li *ngFor="let item of inStock">{{ item.name }}</li>
+          </ul>
+        </div>
       </div>
       <div>
         <div>Out of Stock</div>
-        <div></div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div>Essentials</div>
-    <div>
-      <div>
-        <div>In-Stock</div>
-        <div></div>
-      </div>
-      <div>
-        <div>Out of Stock</div>
-        <div></div>
+        <div>
+          <ul>
+            <li class="orange" *ngFor="let item of outOfStock">{{ item.name }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

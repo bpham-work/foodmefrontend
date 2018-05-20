@@ -14,6 +14,8 @@ import { Item } from '../model/item';
 export class StoreDetailComponent implements OnInit {
   public store: GroceryStore;
   public items: Item[];
+  public inStock: Item[];
+  public outOfStock: Item[];
 
   constructor(private storeService: StoreService) {}
 
@@ -24,6 +26,10 @@ export class StoreDetailComponent implements OnInit {
         this.store = store;
         return this.storeService.getItems(store.id);
       })
-      .subscribe((items: Item[]) => this.items = items);
+      .subscribe((items: Item[]) => {
+        this.inStock = items.filter((item: Item) => item.availability);
+        this.outOfStock = items.filter((item: Item) => !item.availability);
+        this.items = items;
+      });
   }
 }

@@ -1,5 +1,10 @@
 <div class="container">
-  <button *ngIf="storeSelected" (click)="hideStoreDetails()">Back</button>
+  <!--<button *ngIf="storeSelected" mat-icon-button (click)="hideStoreDetails()">-->
+    <!--<mat-icon>arrow-back</mat-icon>-->
+  <!--</button>-->
+  <button *ngIf="storeSelected" mat-button (click)="hideStoreDetails()">
+    Back
+  </button>
   <store-detail *ngIf="storeSelected"></store-detail>
   <div *ngIf="!storeSelected">
     <div>Stores</div>
