@@ -1,7 +1,12 @@
-<div>
-  <mat-form-field>
-    <input matInput #search type="search"
-           placeholder="Zipcode" (keyup.enter)="onEnter(search.value)">
-    <mat-icon matPrefix>search</mat-icon>
-  </mat-form-field>
+<div class="container">
+  <div>
+    <mat-form-field>
+      <input matInput #search type="search"
+             placeholder="Zipcode" (keyup.enter)="onEnter(search.value)">
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <div class="report-button">
+    Report wait time/inventory
+  </div>
 </div>
