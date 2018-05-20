@@ -4,6 +4,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from 'environments/environment';
 import { AppState } from './app.service';
+import { StoreService } from './service/store.service';
 
 /**
  * App Component
@@ -25,11 +26,13 @@ export class AppComponent implements OnInit {
   public showDevModule: boolean = environment.showDevModule;
 
   constructor(
-    public appState: AppState
+    public appState: AppState,
+    private storeService: StoreService
   ) {}
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    this.storeService.loadStores('77002');
   }
 
 }
