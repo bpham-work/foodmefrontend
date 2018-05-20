@@ -12,6 +12,8 @@ import { ItemInStockReport } from '../model/iteminstockreport';
 
 @Injectable()
 export class StoreService {
+  private const HOST: string = 'http://54.210.246.115:8080';
+
   constructor(private http: HttpClient, private store: Store<any>) {}
 
   public getStores(): Observable<GroceryStore[]> {
@@ -19,8 +21,7 @@ export class StoreService {
   }
 
   public loadStores(zip: string): void {
-    // const uri = 'http://54.210.246.115:8080/store/' + zip;
-    const uri = 'http://localhost:8080/store/' + zip;
+    const uri = this.HOST + '/store/' + zip;
     this.http.get(uri)
       .map((json: any[]) => json.map((elem) => GroceryStore.from(elem)) as GroceryStore[])
       .subscribe((stores: GroceryStore[]) =>
@@ -36,8 +37,7 @@ export class StoreService {
   }
 
   public getItems(storeId: string): Observable<Item[]> {
-    // const uri = 'http://54.210.246.115:8080/store/' + storeId + '/items';
-    const uri = 'http://localhost:8080/store/' + storeId + '/items';
+    const uri = this.HOST + '/store/' + storeId + '/items';
     return this.http.get(uri)
       .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[]);
   }
@@ -67,10 +67,10 @@ export class StoreService {
   }
 
   private getOutOfStockUri(item: ItemOutOfStockReport): string {
-    return 'http://localhost:8080/item/' + item.itemId + '/unavailable';
+    return this.HOST + '/item/' + item.itemId + '/unavailable';
   }
 
   private getInStockUri(item: ItemInStockReport): string {
-    return 'http://localhost:8080/item/' + item.itemId + '/available';
+    return this.HOST + '/item/' + item.itemId + '/available';
   }
 }
