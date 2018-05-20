@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 import { GroceryStore } from '../model/grocerystore';
 import { Item } from '../model/item';
 import { STORE_SAVE, STORE_SELECT } from '../reducer/store.reducer';
+import { ItemOutOfStockReport } from '../model/itemoutofstockreport';
+import { ItemInStockReport } from '../model/iteminstockreport';
 
 @Injectable()
 export class StoreService {
@@ -38,5 +40,37 @@ export class StoreService {
     const uri = 'http://localhost:8080/store/' + storeId + '/items';
     return this.http.get(uri)
       .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[]);
+  }
+
+  public setOutOfStock(outOfStockItems: ItemOutOfStockReport[]): void {
+    for (const item of outOfStockItems) {
+      if (item.outOfStock) {
+        const uri = this.getOutOfStockUri(item);
+        this.http.get(uri)
+          .subscribe(() => {
+            // empty body
+          });
+      }
+    }
+  }
+
+  public setInStock(inStockReport: ItemInStockReport[]): void {
+    for (const item of inStockReport) {
+      if (item.inStock) {
+        const uri = this.getInStockUri(item);
+        this.http.get(uri)
+          .subscribe(() => {
+            // empty body
+          });
+      }
+    }
+  }
+
+  private getOutOfStockUri(item: ItemOutOfStockReport): string {
+    return 'http://localhost:8080/item/' + item.itemId + '/unavailable';
+  }
+
+  private getInStockUri(item: ItemInStockReport): string {
+    return 'http://localhost:8080/item/' + item.itemId + '/available';
   }
 }

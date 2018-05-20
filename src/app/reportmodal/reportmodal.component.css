@@ -1,0 +1,11 @@
+.example-full-width {
+  width: 100%;
+}
+
+.list-container {
+  display: flex;
+}
+
+#in-stock {
+  flex-grow: 0.25;
+}

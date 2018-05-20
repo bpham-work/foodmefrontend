@@ -8,7 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { StoreModule } from '@ngrx/store';
 import {
   MatButtonModule,
-  MatCheckboxModule, MatIconModule, MatInputModule, MatListModule, MatToolbarModule
+  MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatToolbarModule
 } from '@angular/material';
 
 /*
@@ -35,6 +35,7 @@ import { storeReducer, storeSelectReducer } from './reducer/store.reducer';
 import { StorelistComponent } from './storelist/storelist.component';
 import { StoreDetailComponent } from './storedetail/storedetail.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { ReportModalComponent } from './reportmodal/reportmodal.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -62,7 +63,8 @@ interface StoreType {
     MapComponent,
     StorelistComponent,
     StoreDetailComponent,
-    TopbarComponent
+    TopbarComponent,
+    ReportModalComponent
   ],
   /**
    * Import Angular's modules.
@@ -89,6 +91,8 @@ interface StoreType {
     MatToolbarModule,
     MatInputModule,
     MatIconModule,
+    MatDialogModule,
+    MatCheckboxModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.
@@ -104,6 +108,7 @@ interface StoreType {
     environment.ENV_PROVIDERS,
     APP_PROVIDERS,
     StoreService
-  ]
+  ],
+  entryComponents: [ReportModalComponent]
 })
 export class AppModule {}

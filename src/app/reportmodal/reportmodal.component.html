@@ -1,0 +1,31 @@
+<div>Report wait time/inventory</div>
+<mat-dialog-content>
+  <div>Visit Details</div>
+  <mat-form-field class="example-full-width">
+    <input matInput [readonly]=true placeholder="Store" value="{{ store.name }} {{ store.address }}">
+  </mat-form-field>
+  <div>
+  <div class="list-container">
+    <div id="in-stock">
+      <div>In Stock</div>
+      <div *ngFor="let item of inStockItems">
+        <mat-checkbox [(ngModel)]="item.inStock">
+          {{ item.name }}
+        </mat-checkbox>
+      </div>
+    </div>
+    <div>
+      <div>Out of Stock</div>
+      <div *ngFor="let item of outOfStockItems">
+        <mat-checkbox [(ngModel)]="item.outOfStock">
+          {{ item.name }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="submit()">Submit</button>
+</mat-dialog-actions>
