@@ -19,6 +19,7 @@ export class StorelistComponent implements OnInit {
     this.storeService.getStores()
       .subscribe((stores: GroceryStore[]) => this.stores = stores);
     this.storeService.getSelectedStore()
+      .skipWhile((n: any) => !n)
       .subscribe((store: GroceryStore) => {
         this.storeSelected = true;
       });
