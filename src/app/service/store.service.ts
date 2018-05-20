@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { GroceryStore } from '../model/grocerystore';
 import { Item } from '../model/item';
-import { STORE_SAVE } from '../reducer/store.reducer';
+import { STORE_SAVE, STORE_SELECT } from '../reducer/store.reducer';
 
 @Injectable()
 export class StoreService {
@@ -25,7 +25,15 @@ export class StoreService {
         this.store.dispatch({type: STORE_SAVE, payload: stores}));
   }
 
-  public loadItems(storeId: string): Observable<Item[]> {
+  public selectStore(store: GroceryStore): void {
+    this.store.dispatch({type: STORE_SELECT, payload: store});
+  }
+
+  public getSelectedStore(): Observable<GroceryStore> {
+    return this.store.pipe(select('selectedStore'));
+  }
+
+  public getItems(storeId: string): Observable<Item[]> {
     // const uri = 'http://54.210.246.115:8080/store/' + storeId + '/items';
     const uri = 'http://localhost:8080/store/' + storeId + '/items';
     return this.http.get(uri)

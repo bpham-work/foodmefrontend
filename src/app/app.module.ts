@@ -31,8 +31,9 @@ import '../styles/headings.css';
 import '../styles/purple-green.css';
 import { MapComponent } from './map/map.component';
 import { StoreService } from './service/store.service';
-import { storeReducer } from './reducer/store.reducer';
+import { storeReducer, storeSelectReducer } from './reducer/store.reducer';
 import { StorelistComponent } from './storelist/storelist.component';
+import { StoreDetailComponent } from './storedetail/storedetail.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -58,14 +59,16 @@ interface StoreType {
     NoContentComponent,
     XLargeDirective,
     MapComponent,
-    StorelistComponent
+    StorelistComponent,
+    StoreDetailComponent
   ],
   /**
    * Import Angular's modules.
    */
   imports: [
     StoreModule.forRoot({
-      store: storeReducer
+      store: storeReducer,
+      selectedStore: storeSelectReducer
     }),
     BrowserModule,
     BrowserAnimationsModule,
