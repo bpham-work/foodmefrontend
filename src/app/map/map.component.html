@@ -1,5 +1,10 @@
 <div>
   <agm-map [latitude]="cameraLat" [longitude]="cameraLng" [zoom]="zoom">
-    <agm-marker *ngFor="let store of stores" [latitude]="store.lat" [longitude]="store.lng"></agm-marker>
+    <agm-marker *ngFor="let store of stores"
+                [latitude]="store.lat"
+                [longitude]="store.lng"
+                [markerClickable]="true"
+                (markerClick)="markerClick(store)"
+    ></agm-marker>
   </agm-map>
 </div>

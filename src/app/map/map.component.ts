@@ -34,4 +34,8 @@ export class MapComponent implements OnInit {
         this.cameraLng = store.lng;
       });
   }
+
+  public markerClick(store: GroceryStore): void {
+    this.storeService.selectStore(store);
+  }
 }
