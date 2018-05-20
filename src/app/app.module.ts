@@ -25,6 +25,7 @@ import { DevModuleModule } from './+dev-module';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 import '../styles/purple-green.css';
+import { MapComponent } from './map/map.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -48,7 +49,8 @@ interface StoreType {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    MapComponent
   ],
   /**
    * Import Angular's modules.

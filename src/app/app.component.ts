@@ -16,6 +16,7 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
+    <button mat-raised-button color="primary">Basic</button>
     <nav>
       <a [routerLink]=" ['./'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
@@ -45,6 +46,7 @@ import { AppState } from './app.service';
 
     <main>
       <router-outlet></router-outlet>
+      <map></map>
     </main>
 
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
