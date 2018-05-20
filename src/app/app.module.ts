@@ -8,7 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { StoreModule } from '@ngrx/store';
 import {
   MatButtonModule,
-  MatCheckboxModule
+  MatCheckboxModule, MatListModule
 } from '@angular/material';
 
 /*
@@ -32,6 +32,7 @@ import '../styles/purple-green.css';
 import { MapComponent } from './map/map.component';
 import { StoreService } from './service/store.service';
 import { storeReducer } from './reducer/store.reducer';
+import { StorelistComponent } from './storelist/storelist.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -56,7 +57,8 @@ interface StoreType {
     HomeComponent,
     NoContentComponent,
     XLargeDirective,
-    MapComponent
+    MapComponent,
+    StorelistComponent
   ],
   /**
    * Import Angular's modules.
@@ -78,6 +80,7 @@ interface StoreType {
     }),
     MatButtonModule,
     MatCheckboxModule,
+    MatListModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.

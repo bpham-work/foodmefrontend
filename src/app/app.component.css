@@ -6,3 +6,16 @@ html, body{
 a.active {
   background-color: gray;
 }
+
+.map-list-container {
+  display: flex;
+  flex-direction: row;
+}
+
+map {
+  flex-grow: 4;
+}
+
+store-list {
+  flex-grow: 0.3;
+}

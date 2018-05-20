@@ -1,0 +1,21 @@
+<div class="container">
+  <!--<mat-list>-->
+    <!--<mat-list-item *ngFor="let store of stores">-->
+      <!--<img matListAvatar src="..." alt="...">-->
+      <!--<h3 matLine> {{ store.name }} </h3>-->
+      <!--<p matLine>-->
+        <!--<span> {{ store.address }} </span>-->
+      <!--</p>-->
+    <!--</mat-list-item>-->
+  <!--</mat-list>-->
+  <div>Stores</div>
+  <div *ngFor="let store of stores">
+    <div class="store-container">
+      <div class="avatar">image</div>
+      <div>
+        <div>{{ store.name }}</div>
+        <div>{{ store.address }}</div>
+      </div>
+    </div>
+  </div>
+</div>

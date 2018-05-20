@@ -1,6 +1,7 @@
 export class GroceryStore {
   public id: string;
   public name: string;
+  public address: string = '123 fake street';
   public lat: number;
   public lng: number;
   public rating: number;

@@ -1,0 +1,13 @@
+.store-container {
+  display: flex;
+  margin: 25px 0px 25px 0px;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.avatar {
+  margin-right: 15px;
+}
