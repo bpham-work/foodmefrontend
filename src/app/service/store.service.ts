@@ -12,7 +12,7 @@ import { ItemInStockReport } from '../model/iteminstockreport';
 
 @Injectable()
 export class StoreService {
-  private const HOST: string = 'http://54.210.246.115:8080';
+  private HOST: string = 'http://54.210.246.115:8080';
 
   constructor(private http: HttpClient, private store: Store<any>) {}
 
