@@ -26,7 +26,7 @@ export class ReportModalComponent implements OnInit {
       .skipWhile((n: any) => !n)
       .switchMap((store: GroceryStore) => {
         this.store = store;
-        return this.storeService.getItems(store.id);
+        return this.storeService.getItems();
       })
       .subscribe((items: Item[]) => {
         this.items = items;

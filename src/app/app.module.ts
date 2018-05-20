@@ -31,7 +31,7 @@ import '../styles/headings.css';
 import '../styles/purple-green.css';
 import { MapComponent } from './map/map.component';
 import { StoreService } from './service/store.service';
-import { storeReducer, storeSelectReducer } from './reducer/store.reducer';
+import { selectedItemsReducer, storeReducer, storeSelectReducer } from './reducer/store.reducer';
 import { StorelistComponent } from './storelist/storelist.component';
 import { StoreDetailComponent } from './storedetail/storedetail.component';
 import { TopbarComponent } from './topbar/topbar.component';
@@ -72,7 +72,8 @@ interface StoreType {
   imports: [
     StoreModule.forRoot({
       store: storeReducer,
-      selectedStore: storeSelectReducer
+      selectedStore: storeSelectReducer,
+      selectedItems: selectedItemsReducer
     }),
     BrowserModule,
     BrowserAnimationsModule,

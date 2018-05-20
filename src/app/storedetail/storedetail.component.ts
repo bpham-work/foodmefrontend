@@ -24,7 +24,8 @@ export class StoreDetailComponent implements OnInit {
       .skipWhile((n: any) => !n)
       .switchMap((store: GroceryStore) => {
         this.store = store;
-        return this.storeService.getItems(store.id);
+        this.storeService.loadItems(store.id);
+        return this.storeService.getItems();
       })
       .subscribe((items: Item[]) => {
         this.inStock = items.filter((item: Item) => item.availability);

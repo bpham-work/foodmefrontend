@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { GroceryStore } from '../model/grocerystore';
 import { Item } from '../model/item';
-import { STORE_SAVE, STORE_SELECT } from '../reducer/store.reducer';
+import { ITEM_SELECT, STORE_SAVE, STORE_SELECT } from '../reducer/store.reducer';
 import { ItemOutOfStockReport } from '../model/itemoutofstockreport';
 import { ItemInStockReport } from '../model/iteminstockreport';
 
@@ -36,20 +36,30 @@ export class StoreService {
     return this.store.pipe(select('selectedStore'));
   }
 
-  public getItems(storeId: string): Observable<Item[]> {
+  public loadItems(storeId: string): void {
     const uri = this.HOST + '/store/' + storeId + '/items';
-    return this.http.get(uri)
-      .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[]);
+    this.http.get(uri)
+      .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[])
+      .subscribe((items: Item[]) => this.store.dispatch({type: ITEM_SELECT, payload: items}));
   }
+
+  public getItems(): Observable<Item[]> {
+    return this.store.pipe(select('selectedItems'));
+  }
+
+  // public getItems(storeId: string): Observable<Item[]> {
+  //   const uri = this.HOST + '/store/' + storeId + '/items';
+  //   return this.http.get(uri)
+  //     .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[]);
+  // }
 
   public setOutOfStock(outOfStockItems: ItemOutOfStockReport[]): void {
     for (const item of outOfStockItems) {
       if (item.outOfStock) {
         const uri = this.getOutOfStockUri(item);
         this.http.get(uri)
-          .subscribe(() => {
-            // empty body
-          });
+          .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[])
+          .subscribe((items: Item[]) => this.store.dispatch({type: ITEM_SELECT, payload: items}));
       }
     }
   }
@@ -59,9 +69,8 @@ export class StoreService {
       if (item.inStock) {
         const uri = this.getInStockUri(item);
         this.http.get(uri)
-          .subscribe(() => {
-            // empty body
-          });
+          .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[])
+          .subscribe((items: Item[]) => this.store.dispatch({type: ITEM_SELECT, payload: items}));
       }
     }
   }
