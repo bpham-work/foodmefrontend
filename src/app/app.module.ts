@@ -26,6 +26,7 @@ import '../styles/styles.scss';
 import '../styles/headings.css';
 import '../styles/purple-green.css';
 import { MapComponent } from './map/map.component';
+import { StoreService } from './service/store.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -82,7 +83,8 @@ interface StoreType {
    */
   providers: [
     environment.ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    StoreService
   ]
 })
 export class AppModule {}
