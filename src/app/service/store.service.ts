@@ -11,13 +11,15 @@ export class StoreService {
   constructor(private http: HttpClient) {}
 
   public getStores(zip: string): Observable<Store[]> {
-    const uri = 'http://54.210.246.115:8080/store/' + zip;
+    // const uri = 'http://54.210.246.115:8080/store/' + zip;
+    const uri = 'http://localhost:8080/store/' + zip;
     return this.http.get(uri)
       .map((json: any[]) => json.map((elem) => Store.from(elem)) as Store[]);
   }
 
   public getItems(storeId: string): Observable<Item[]> {
-    const uri = 'http://54.210.246.115:8080/store/' + storeId + '/items';
+    // const uri = 'http://54.210.246.115:8080/store/' + storeId + '/items';
+    const uri = 'http://localhost:8080/store/' + storeId + '/items';
     return this.http.get(uri)
       .map((json: any[]) => json.map((elem) => Item.from(elem)) as Item[]);
   }
