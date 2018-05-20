@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AgmCoreModule } from '@agm/core';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -22,6 +24,7 @@ import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import '../styles/purple-green.css';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -59,6 +62,11 @@ interface StoreType {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBPvCpz5EBmx1uDxlVPpVfbqGHqr6Z0v74'
+    }),
+    MatButtonModule,
+    MatCheckboxModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.
