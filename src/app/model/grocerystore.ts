@@ -1,4 +1,4 @@
-export class Store {
+export class GroceryStore {
   public id: string;
   public name: string;
   public lat: number;
@@ -6,7 +6,7 @@ export class Store {
   public rating: number;
 
   public static from(json: any) {
-    return new Store(json.id, json.name, json.geometry.location.lat,
+    return new GroceryStore(json.id, json.name, json.geometry.location.lat,
       json.geometry.location.lng, json.rating);
   }
 

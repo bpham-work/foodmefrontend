@@ -5,7 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { StoreModule } from '@ngrx/store';
+import {
+  MatButtonModule,
+  MatCheckboxModule
+} from '@angular/material';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -27,6 +31,7 @@ import '../styles/headings.css';
 import '../styles/purple-green.css';
 import { MapComponent } from './map/map.component';
 import { StoreService } from './service/store.service';
+import { storeReducer } from './reducer/store.reducer';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -57,6 +62,9 @@ interface StoreType {
    * Import Angular's modules.
    */
   imports: [
+    StoreModule.forRoot({
+      store: storeReducer
+    }),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

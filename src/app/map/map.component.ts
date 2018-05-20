@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { StoreService } from '../service/store.service';
-import { Store } from '../model/store';
+import { GroceryStore } from '../model/grocerystore';
 
 @Component({
   selector: 'map',
@@ -9,12 +9,13 @@ import { Store } from '../model/store';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  public stores: Store[] = [];
+  public stores: GroceryStore[] = [];
 
   constructor(private storeService: StoreService) {}
 
   public ngOnInit(): void {
-    this.storeService.getStores('77477')
-      .subscribe((stores: Store[]) => this.stores = stores);
+    this.storeService.loadStores('77477');
+    this.storeService.getStores()
+      .subscribe((stores: GroceryStore[]) => this.stores = stores);
   }
 }
