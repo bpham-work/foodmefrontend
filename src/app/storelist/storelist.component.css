@@ -6,6 +6,8 @@
 .container {
   padding-left: 15px;
   padding-right: 15px;
+  height: 800px;
+  overflow-y: scroll;
 }
 
 .avatar {
