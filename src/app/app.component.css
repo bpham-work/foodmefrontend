@@ -13,9 +13,10 @@ a.active {
 }
 
 map {
-  flex-grow: 4;
+  flex-grow: 3;
 }
 
 store-list {
   flex-grow: 0.3;
+  width: 475px;
 }

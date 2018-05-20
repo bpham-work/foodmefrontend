@@ -8,7 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { StoreModule } from '@ngrx/store';
 import {
   MatButtonModule,
-  MatCheckboxModule, MatListModule
+  MatCheckboxModule, MatIconModule, MatInputModule, MatListModule, MatToolbarModule
 } from '@angular/material';
 
 /*
@@ -34,6 +34,7 @@ import { StoreService } from './service/store.service';
 import { storeReducer, storeSelectReducer } from './reducer/store.reducer';
 import { StorelistComponent } from './storelist/storelist.component';
 import { StoreDetailComponent } from './storedetail/storedetail.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -60,7 +61,8 @@ interface StoreType {
     XLargeDirective,
     MapComponent,
     StorelistComponent,
-    StoreDetailComponent
+    StoreDetailComponent,
+    TopbarComponent
   ],
   /**
    * Import Angular's modules.
@@ -84,6 +86,9 @@ interface StoreType {
     MatButtonModule,
     MatCheckboxModule,
     MatListModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatIconModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.

@@ -14,7 +14,6 @@ export class MapComponent implements OnInit {
   constructor(private storeService: StoreService) {}
 
   public ngOnInit(): void {
-    this.storeService.loadStores('77477');
     this.storeService.getStores()
       .subscribe((stores: GroceryStore[]) => this.stores = stores);
   }

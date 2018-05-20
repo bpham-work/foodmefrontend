@@ -5,7 +5,7 @@
     <div>Stores</div>
     <div *ngFor="let store of stores" (click)="selectStore(store)">
       <div class="store-container">
-        <div class="avatar">image</div>
+        <div class="avatar"><img src="{{ store.photoUrl }}"/></div>
         <div>
           <div>{{ store.name }}</div>
           <div>{{ store.address }}</div>
